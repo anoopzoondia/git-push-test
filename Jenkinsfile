@@ -16,7 +16,7 @@ node{
             stage('Checkout') {
                 checkout([
                     $class: 'GitSCM',
-                    branches: [[name: 'refs/heads/master']],
+                    branches: [[name: 'master']],
                     doGenerateSubmoduleConfigurations: false,
                     extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'CalibrationResults']],
                     submoduleCfg: [],
@@ -36,3 +36,4 @@ node{
 
 
     }
+}
