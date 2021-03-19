@@ -18,10 +18,12 @@ node{
                     $class: 'GitSCM',
                     branches: [[name: 'master']],
                     doGenerateSubmoduleConfigurations: false,
-                    extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'CalibrationResults']],
+                    extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'remote-git-push-test']],
                     submoduleCfg: [],
                     userRemoteConfigs: [[credentialsId: '9c62d78a-dde8-4447-94e8-b317a4f97dfe', url: 'http://git.zooservers.com:90/anoop/remote-git-push-test.git']]
                 ])
+
+                sh 'ls'
             }
 
         }catch (caughtError) {
