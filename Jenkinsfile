@@ -24,7 +24,14 @@ node{
                 ])
 
                 sh 'ls'
-            }
+             }
+
+             stage ("Moving to sub Directory"){
+                    dir("remote-git-push-test") {
+                        sh 'ls'
+                    }
+                }
+             }
 
         }catch (caughtError) {
             echo 'exception caught'
