@@ -27,7 +27,7 @@ node{
 
                 checkout([
                     $class: 'GitSCM',
-                    branches: [[name: 'master']],
+                    branches: [[name: 'main']],
                     doGenerateSubmoduleConfigurations: false,
                     extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'git-push-test']],
                     submoduleCfg: [],
