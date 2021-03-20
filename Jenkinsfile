@@ -25,7 +25,19 @@ node{
                     userRemoteConfigs: [[credentialsId: '9c62d78a-dde8-4447-94e8-b317a4f97dfe', url: 'http://git.zooservers.com:90/anoop/remote-git-push-test.git']]
                 ])
 
+                checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: 'master']],
+                    doGenerateSubmoduleConfigurations: false,
+                    extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'git-push-test']],
+                    submoduleCfg: [],
+                    userRemoteConfigs: [[credentialsId: 'f7483046-b22e-48f6-b6a6-d3c682cbc720', url: 'https://github.com/anoopzoondia/git-push-test.git']]
+                ])
+
                 sh 'ls'
+             }
+             stage("Copying content from source to destination"){
+                sh "rsync -a --exclude='.git/' --exclude='*' ~/remote-git-push-test/ ~/git-push-test/"
              }
 
              stage ("Moving to sub Directory"){
