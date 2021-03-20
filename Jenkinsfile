@@ -5,7 +5,8 @@ import groovy.time.TimeDuration
 node{
     def app
 
-    def repo_url = "https://846172205013.dkr.ecr.us-east-1.amazonaws.com"
+    def source_git = ""
+    def destination_git = "https://github.com/anoopzoondia/git-push-test.git"
 
     if (1==1) {
         def err = null
@@ -28,7 +29,18 @@ node{
 
              stage ("Moving to sub Directory"){
                 dir("remote-git-push-test") {
-                    sh 'ls'
+                    withCredentials([usernamePassword(credentialsId: 'f7483046-b22e-48f6-b6a6-d3c682cbc720',
+                      usernameVariable: 'USER',
+                      passwordVariable: 'PASS')]) {
+                        script {
+                            encodedPass=URLEncoder.encode(PASS, "UTF-8")
+                        }
+                        BRANCH = "master"
+                        sh 'git clone https://${USER}:${encodedPass}@${destination_git} -b ${BRANCH}'
+                        sh 'git add .'
+                        sh 'git commit -m "Commit from CI/CD" '
+                        sh 'git push'
+                    }
                 }
              }
 
