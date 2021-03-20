@@ -6,7 +6,7 @@ node{
     def app
 
     def source_git = ""
-    def destination_git = "https://github.com/anoopzoondia/git-push-test.git"
+    def destination_git = "github.com/anoopzoondia/git-push-test.git"
     def destination_master_branch = "master"
 
     if (1==1) {
