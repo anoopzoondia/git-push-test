@@ -36,7 +36,7 @@ node{
 
 
 
-                        sh 'git clone https://${USER}:${PASS}@${destination_git} -b master'
+                        sh "git clone https://${USER}:${PASS}@${destination_git} -b master"
                         sh 'git add .'
                         sh 'git commit -m "Commit from CI/CD" '
                         sh 'git push'
