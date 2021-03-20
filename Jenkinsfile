@@ -32,11 +32,10 @@ node{
                     withCredentials([usernamePassword(credentialsId: 'f7483046-b22e-48f6-b6a6-d3c682cbc720',
                       usernameVariable: 'USER',
                       passwordVariable: 'PASS')]) {
-                        script {
-                            encodedPass=URLEncoder.encode(PASS, "UTF-8")
-                        }
+
+
                         BRANCH = "master"
-                        sh 'git clone https://${USER}:${encodedPass}@${destination_git} -b ${BRANCH}'
+                        sh 'git clone https://${USER}:${PASS}@${destination_git} -b ${BRANCH}'
                         sh 'git add .'
                         sh 'git commit -m "Commit from CI/CD" '
                         sh 'git push'
