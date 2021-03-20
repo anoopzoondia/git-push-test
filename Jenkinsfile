@@ -36,7 +36,7 @@ node{
 
                 sh 'ls'
              }
-             stage("Copying content from source to destination"){
+             stage("copying content from source to destination"){
                 sh "rsync -a --exclude='.git/' --exclude='*' ~/remote-git-push-test/ ~/git-push-test/"
              }
 
